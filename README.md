@@ -13,8 +13,13 @@
 
 
 ##3. Installation
-    一行shell搞定安装
-> `bash -c "$( curl https://raw.githubusercontent.com/yllziv/zivim/master/install.sh )"`
+- 在shell中执行 git clone https://github.com/yllziv/zivim.git
+- mv zivim/.vimrc ~
+- mv zivim/.editorconfig ~
+- rm -rf zivim
+- git clone https://github.com/gmarik/vundle.git .vim/bundle/vundle
+- 最后进入vim执行 :BundleInstall
+
 
 ##4. Question
 - jsbeautify插件需要新建配置文件.editorconfig
