@@ -21,8 +21,4 @@
 - rm -rf zivim
 - git clone https://github.com/gmarik/vundle.git .vim/bundle/vundle
 - 最后进入vim执行 :BundleInstall
-
-
-##4. Question
-
-- 修改~/.vim/plugin/winmanager.vim文件，在ToggleWindowsManager函数下 call s:StartWindowsManager()这行下面添加 exe 'q' 
+- 修改~/.vim/bundle/winmanager/plugin/winmanager.vim文件，在ToggleWindowsManager函数下 call s:StartWindowsManager()这行下面添加 exe 'q' 
