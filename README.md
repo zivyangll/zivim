@@ -24,38 +24,5 @@
 
 
 ##4. Question
-- jsbeautify插件需要新建配置文件.editorconfig
-
-  root = true
-
-  [**.js]
-
-  path=~/.vim/bundle/js-beautify/js/lib/beautify.js
-
-  bin=node
-
-  indent_style = space
-
-  indent_size = 4
-
-  [**.css]
-
-  path=~/.vim/bundle/js-beautify/js/lib/beautify-css.js
-
-  indent_style = space
-
-  indent_size = 4
-
-  [**.html]
-
-  vim:path=~/.vim/bundle/js-beautify/js/lib/beautify-html.js
-
-  vim:max_char=78:brace_style=expand
-
-  indent_style = space
-
-  indent_size = 4
-
-
 
 - 修改~/.vim/plugin/winmanager.vim文件，在ToggleWindowsManager函数下 call s:StartWindowsManager()这行下面添加 exe 'q' 
