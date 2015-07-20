@@ -260,7 +260,7 @@ let g:molokai_original = 1
 let g:rehash256 = 1
 set t_Co=256
 set background=dark
-silent! colorscheme molokai
+colorscheme=molokai
 
 "15. vim-multiple-cursors插件：多行操作
 Bundle 'terryma/vim-multiple-cursors'
