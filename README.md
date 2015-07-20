@@ -14,6 +14,8 @@
 
 ##3. Installation
 - 在shell中执行 git clone https://github.com/yllziv/zivim.git
+- rm -rf .vim*
+- rm .vimrc
 - mv zivim/.vimrc ~
 - mv zivim/.editorconfig ~
 - rm -rf zivim
