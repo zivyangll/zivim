@@ -3,7 +3,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 "输入函数使用{{，大括号自动缩进
 imap {{ {<CR><CR><esc>k<esc>i<Tab>
-
+"关闭自动高亮显示匹配的括号
+let loaded_matchparen = 1
 "启用手工折叠
 set foldmethod=manual
 
@@ -246,10 +247,10 @@ Bundle 'docunext/closetag.vim'
 "12.jsbeautify插件：  js代码格式化
 Plugin 'maksimr/vim-jsbeautify'
 Plugin 'einars/js-beautify'
-map <c-f> :call JsBeautify()<cr>
-autocmd FileType javascript noremap <buffer>  <c-f> :call JsBeautify()<cr>
-autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
-autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+map <leader>f :call JsBeautify()<cr>
+autocmd FileType javascript noremap <buffer> <leader>f :call JsBeautify()<cr>
+autocmd FileType html noremap <buffer> <leader>f :call HtmlBeautify()<cr>
+autocmd FileType css noremap <buffer> <leader>f :call CSSBeautify()<cr>
 
 "13.repeat.vim插件：重复操作：.
 Bundle 'repeat.vim'
@@ -341,7 +342,6 @@ map <Leader><leader>h <Plug>(easymotion-linebackward)
 map <Leader><Leader>j <Plug>(easymotion-j)
 map <Leader><Leader>k <Plug>(easymotion-k)
 map <Leader><leader>l <Plug>(easymotion-lineforward)
-nmap s <Plug>(easymotion-s2)
 map  / <Plug>(easymotion-sn)
 omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
