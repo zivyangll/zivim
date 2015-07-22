@@ -9,8 +9,13 @@
         - jshint
     - ctags 
 
-在root权限下全局安装 yum install git ，安装yum install ctags ，安装node和npm，然后安装jshint：npm install -g jshint
 
+在root权限下
+- 全局安装git：yum install git 
+- 安装ctags：yum install ctags ，
+- 安装node和npm，
+- 安装js语法检查插件jshint：npm install -g jshint
+- 安装markdown预览插件：npm install -g instant-markdown-d
 
 ##3. Installation
 - 在shell中执行 git clone https://github.com/yllziv/zivim.git

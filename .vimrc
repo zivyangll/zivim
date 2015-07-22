@@ -217,8 +217,8 @@ Bundle 'gregsexton/MatchTag'
 "5. The-NERD-tree插件：树状显示文件目录,设置打开目录快捷键为F2
 Bundle 'The-NERD-tree'
  " 按下 F2 调出/隐藏 NERDTree
- map <F2> :NERDTreeMirror<CR>
- map <F2> :NERDTreeToggle<CR>
+ "map <F2> :NERDTreeMirror<CR>
+ "map <F2> :NERDTreeToggle<CR>
  " 当打开 NERDTree 窗口时，自动显示 Bookmarks
  let NERDTreeShowBookmarks=1
  " 只剩 NERDTree时自动关闭
@@ -293,15 +293,13 @@ Bundle 'taglist.vim'
 let Tlist_Show_One_File = 1
 "taglist为最后一个窗口时，退出vim
 let Tlist_Exit_OnlyWindow = 1
-"设置taglist打开关闭的快捷键F3
-noremap <F3> :TlistToggle<CR>
 "更新ctags标签文件快捷键设置
-noremap <F6> :!ctags -R<CR>
+noremap <Leader>tl :!ctags -R<CR>
 
 "20. winmanager插件：实现对vim窗口的管理
 Bundle 'winmanager'
-"定义打开关闭winmanager快捷键为F4
-nmap <silent> <F4> :WMToggle<cr>
+"定义打开关闭winmanager快捷键为,ww
+nmap <silent> <Leader>ww :WMToggle<cr>
 "在进入vim时自动打开winmanager
 let g:AutoOpenWinManager = 1
 "设置winmanager的宽度，默认为25
@@ -402,3 +400,9 @@ let g:vim_markdown_folding_disabled=1
  au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd 
  map asdf <Plug>Markdown_MoveToParentHeader
 nmap <silent> <leader>h :Toc<cr> 
+
+"31 markdown实时预览
+Bundle 'suan/vim-instant-markdown'
+let g:instant_markdown_slow = 1
+let g:instant_markdown_autostart = 1
+ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
