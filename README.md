@@ -3,13 +3,6 @@
 ##1. 介绍
 把自己的vim配置分享在这里，欢迎大家下载使用。
 ##2. PreRequisite
-    - git
-    - vim版本：7.3+ 可通过 **vim version** 查看
-    - npm
-        - jshint
-    - ctags 
-
-
 在root权限下
 - 全局安装git：yum install git 
 - 安装ctags：yum install ctags ，
