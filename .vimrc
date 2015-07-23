@@ -5,8 +5,16 @@
 imap {{ {<CR><CR><esc>k<esc>i<Tab>
 "关闭自动高亮显示匹配的括号
 let loaded_matchparen = 1
-"启用手工折叠
-set foldmethod=manual
+
+"启用缩进折叠
+set foldmethod=indent 
+set foldcolumn=0
+set foldlevel=3 
+set foldenable 
+
+" 用浅色高亮当前行 
+autocmd InsertLeave * se nocul 
+autocmd InsertEnter * se cul 
 
 " 设定默认解码 
 set fenc=utf-8 
@@ -58,6 +66,13 @@ let g:molokai_original = 1
 "map leader键设置  
 let mapleader = ","  
 let g:mapleader = ","  
+
+" 突出显示当前行
+set cursorline 
+
+" 设置魔术
+set magic 
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 " 文件设置 
@@ -144,14 +159,14 @@ set formatoptions=tcrqn
 " 继承前一行的缩进方式，特别适用于多行注释 
 set autoindent
 
-" 为C程序提供自动缩进 
+" 智能自动缩进
 set smartindent
 
-" 使用C样式的缩进 
-set cindent
+"  自动缩进2空格 
+set cindent shiftwidth=2
 
 " 制表符为
-set tabstop=4
+set tabstop=2
 
 " 统一缩进为2
 set softtabstop=2
@@ -298,8 +313,8 @@ noremap <Leader>tl :!ctags -R<CR>
 
 "20. winmanager插件：实现对vim窗口的管理
 Bundle 'winmanager'
-"定义打开关闭winmanager快捷键为,ww
-nmap <silent> <Leader>ww :WMToggle<cr>
+"定义打开关闭winmanager快捷键为,w
+nmap <silent> <Leader>w :WMToggle<cr>
 "在进入vim时自动打开winmanager
 let g:AutoOpenWinManager = 1
 "设置winmanager的宽度，默认为25
@@ -398,7 +413,6 @@ Plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_frontmatter=1
 let g:vim_markdown_folding_disabled=1
  au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd 
- map asdf <Plug>Markdown_MoveToParentHeader
 nmap <silent> <leader>h :Toc<cr> 
 
 "31 markdown实时预览
