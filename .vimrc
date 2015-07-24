@@ -1,8 +1,10 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 " 一般设定 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
+
 "输入函数使用{{，大括号自动缩进
 imap {{ {<CR><CR><esc>k<esc>i<Tab>
+
 "关闭自动高亮显示匹配的括号
 let loaded_matchparen = 1
 
@@ -297,7 +299,7 @@ let g:ctrlp_custom_ignore = {
 
 "18. gundo插件：编辑文件的时光机器
 Bundle 'sjl/gundo.vim'
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <Leader>u :GundoToggle<CR>
 let g:gundo_width = 40
 let g:gundo_preview_height = 10
 let g:gundo_right = 1
@@ -420,3 +422,10 @@ Bundle 'suan/vim-instant-markdown'
 let g:instant_markdown_slow = 1
 let g:instant_markdown_autostart = 1
  autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+ "32 VimIM基于Vim的嵌入式中文输入法
+ Bundle 'VimIM'
+let g:vimim_cloud = 'google,sogou,baidu,qq'  
+let g:vimim_map = 'tab_as_gi'  
+
+imap <c-1> aaa
