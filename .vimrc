@@ -418,10 +418,10 @@ let g:vim_markdown_folding_disabled=1
 nmap <silent> <leader>h :Toc<cr> 
 
 "31 markdown实时预览
-Bundle 'suan/vim-instant-markdown'
-let g:instant_markdown_slow = 1
-let g:instant_markdown_autostart = 1
- autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+"Bundle 'suan/vim-instant-markdown'
+"let g:instant_markdown_slow = 1
+"let g:instant_markdown_autostart = 1
+" autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
  "32 VimIM基于Vim的嵌入式中文输入法
  Bundle 'VimIM'

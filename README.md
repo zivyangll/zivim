@@ -8,7 +8,7 @@
 - 安装ctags：yum install ctags ，
 - 安装node和npm，
 - 安装js语法检查插件jshint：npm install -g jshint
-- 安装markdown预览插件：npm install -g instant-markdown-d
+- 若需要markdown实时预览，则安装markdown预览插件：npm install -g instant-markdown-d,并取消.vimrc 文件的instant-markdown-d 插件的注释即可。
 
 ##3. Installation
 - 在shell中执行 git clone https://github.com/yllziv/zivim.git
