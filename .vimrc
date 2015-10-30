@@ -377,18 +377,14 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 "25. ShowMarks 高亮标记位置
- Bundle 'ShowMarks'
-" Enable ShowMarks
-let showmarks_enable = 1
-" Show which marks
-let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-" Ignore help, quickfix, non-modifiable buffers
-let showmarks_ignore_type = "hqm"
-" Hilight lower & upper marks
-let showmarks_hlline_lower = 1
-let showmarks_hlline_upper = 1 
-hi ShowMarksHLl ctermbg=Yellow   ctermfg=Black  guibg=#FFDB72    guifg=Black
-hi ShowMarksHLu ctermbg=Magenta  ctermfg=Black  guibg=#FFB3FF    guifg=Black 
+" Bundle 'ShowMarks'
+"let showmarks_enable = 1
+"let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+"let showmarks_ignore_type = "hqm"
+"let showmarks_hlline_lower = 1
+"let showmarks_hlline_upper = 1
+"hi ShowMarksHLl ctermbg=Yellow   ctermfg=Black  guibg=#FFDB72    guifg=Black
+"hi ShowMarksHLu ctermbg=Magenta  ctermfg=Black  guibg=#FFB3FF    guifg=Black
 
 "26. Marks-Browser标记浏览窗口
 Bundle 'Marks-Browser'
@@ -401,7 +397,7 @@ set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
 set t_Co=256
 let g:Poerline_symbols='unicode'
-set encoding=utf8
+set encoding=utf-8
 
 "28. html5
 Plugin 'othree/html5.vim'
