@@ -397,7 +397,6 @@ set fillchars+=stl:\ ,stlnc:\
 set laststatus=2
 set t_Co=256
 let g:Poerline_symbols='unicode'
-set encoding=utf-8
 
 "28. html5
 Plugin 'othree/html5.vim'
