@@ -9,10 +9,10 @@ imap {{ {<CR><CR><esc>k<esc>i<Tab>
 let loaded_matchparen = 1
 
 "启用缩进折叠
-set foldmethod=indent 
-set foldcolumn=0
-set foldlevel=3 
-set foldenable 
+"set foldmethod=indent
+"set foldcolumn=0
+"set foldlevel=3
+set foldenable
 
 " 用浅色高亮当前行 
 autocmd InsertLeave * se nocul 
@@ -234,8 +234,8 @@ Bundle 'gregsexton/MatchTag'
 "5. The-NERD-tree插件：树状显示文件目录,设置打开目录快捷键为F2
 Bundle 'The-NERD-tree'
  " 按下 F2 调出/隐藏 NERDTree
- "map <F2> :NERDTreeMirror<CR>
- "map <F2> :NERDTreeToggle<CR>
+ map <Leader>w :NERDTreeMirror<CR>
+ map <Leader>w :NERDTreeToggle<CR>
  " 当打开 NERDTree 窗口时，自动显示 Bookmarks
  let NERDTreeShowBookmarks=1
  " 只剩 NERDTree时自动关闭
@@ -304,37 +304,37 @@ let g:gundo_width = 40
 let g:gundo_preview_height = 10
 let g:gundo_right = 1
 
-"19. taglist.vim插件：
-Bundle 'taglist.vim'
-"不同时显示多个文件的tag，仅显示一个
-let Tlist_Show_One_File = 1
-"taglist为最后一个窗口时，退出vim
-let Tlist_Exit_OnlyWindow = 1
-"更新ctags标签文件快捷键设置
-noremap <Leader>tl :!ctags -R<CR>
+"19. taglist.vim插件：，js不需要，支持不好
+"Bundle 'taglist.vim'
+""不同时显示多个文件的tag，仅显示一个
+"let Tlist_Show_One_File = 1
+""taglist为最后一个窗口时，退出vim
+"let Tlist_Exit_OnlyWindow = 1
+""更新ctags标签文件快捷键设置
+"noremap <Leader>tl :!ctags -R<CR>
 
-"20. winmanager插件：实现对vim窗口的管理
-Bundle 'winmanager'
-"定义打开关闭winmanager快捷键为,w
-nmap <silent> <Leader>w :WMToggle<cr>
-"在进入vim时自动打开winmanager
-let g:AutoOpenWinManager = 1
-"设置winmanager的宽度，默认为25
-let g:winManagerWidth = 30
-
-let g:NERDTree_title="[NERDTree]"  
-" 设置界面分割
-let g:winManagerWindowLayout="NERDTree|TagList"  
-  
-function! NERDTree_Start()  
-    exec 'NERDTree'  
-endfunction  
-
-function! NERDTree_IsValid()  
-    return 1  
-endfunction   
-"自动退出Winmanager
-autocmd bufenter * if (winnr("$") == 2 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary")  | qa | endif
+"20. winmanager插件：实现对vim窗口的管理，不需要，taglist对动态语言js支持不好
+"Bundle 'winmanager'
+""定义打开关闭winmanager快捷键为,w
+"nmap <silent> <Leader>w :WMToggle<cr>
+""在进入vim时自动打开winmanager
+"let g:AutoOpenWinManager = 1
+""设置winmanager的宽度，默认为25
+"let g:winManagerWidth = 30
+"
+"let g:NERDTree_title="[NERDTree]"
+"" 设置界面分割
+"let g:winManagerWindowLayout="NERDTree|TagList"
+"
+"function! NERDTree_Start()
+"    exec 'NERDTree'
+"endfunction
+"
+"function! NERDTree_IsValid()
+"    return 1
+"endfunction
+""自动退出Winmanager
+"autocmd bufenter * if (winnr("$") == 2 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary")  | qa | endif
 
 "21 accelerated-smooth-scroll:平滑滚动插件
 Bundle 'yonchu/accelerated-smooth-scroll'
@@ -362,29 +362,29 @@ omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
-"24 vim-indent-guides可视化缩进插件：
-Bundle 'nathanaelkane/vim-indent-guides'
-" 随 vim 自启动
-let g:indent_guides_enable_on_vim_startup=1
-" 从第二层开始可视化显示缩进
-let g:indent_guides_start_level=2
-" 色块宽度
-let g:indent_guides_guide_size=1
-" 快捷键 i 开/关缩进可视化
-nmap <silent> <Leader>i <Plug>IndentGuidesToggle
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+"24 vim-indent-guides可视化缩进插件，代码显的有些花哨
+"Bundle 'nathanaelkane/vim-indent-guides'
+"" 随 vim 自启动
+"let g:indent_guides_enable_on_vim_startup=1
+"" 从第二层开始可视化显示缩进
+"let g:indent_guides_start_level=2
+"" 色块宽度
+"let g:indent_guides_guide_size=1
+"" 快捷键 i 开/关缩进可视化
+"nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+""let g:indent_guides_auto_colors = 0
+""autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+""autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 "25. ShowMarks 高亮标记位置
-" Bundle 'ShowMarks'
-"let showmarks_enable = 1
-"let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-"let showmarks_ignore_type = "hqm"
-"let showmarks_hlline_lower = 1
-"let showmarks_hlline_upper = 1
-"hi ShowMarksHLl ctermbg=Yellow   ctermfg=Black  guibg=#FFDB72    guifg=Black
-"hi ShowMarksHLu ctermbg=Magenta  ctermfg=Black  guibg=#FFB3FF    guifg=Black
+ Bundle 'ShowMarks'
+let showmarks_enable = 1
+let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+let showmarks_ignore_type = "hqm"
+let showmarks_hlline_lower = 1
+let showmarks_hlline_upper = 1
+hi ShowMarksHLl ctermbg=Yellow   ctermfg=Black  guibg=#FFDB72    guifg=Black
+hi ShowMarksHLu ctermbg=Magenta  ctermfg=Black  guibg=#FFB3FF    guifg=Black
 
 "26. Marks-Browser标记浏览窗口
 Bundle 'Marks-Browser'
@@ -401,9 +401,9 @@ let g:Poerline_symbols='unicode'
 "28. html5
 Plugin 'othree/html5.vim'
 
-"29 skammer/vim-css-color
-Bundle 'skammer/vim-css-color'
-let g:cssColorVimDoNotMessMyUpdatetime = 1
+"29 skammer/vim-css-color 影响打开html速度
+"Bundle 'skammer/vim-css-color'
+"let g:cssColorVimDoNotMessMyUpdatetime = 1
 
 "30 plasticboy/vim-markdown
 Plugin 'plasticboy/vim-markdown'
@@ -412,7 +412,7 @@ let g:vim_markdown_folding_disabled=1
  au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd 
 nmap <silent> <leader>h :Toc<cr> 
 
-"31 markdown实时预览
+"31 markdown实时预览，需要再打开
 "Bundle 'suan/vim-instant-markdown'
 "let g:instant_markdown_slow = 1
 "let g:instant_markdown_autostart = 1
