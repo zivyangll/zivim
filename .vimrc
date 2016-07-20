@@ -3,7 +3,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
 
 "输入函数使用{{，大括号自动缩进
-imap {{ {<CR><CR><esc>k<esc>i<Tab>
+imap {{ {{
 
 "关闭自动高亮显示匹配的括号
 let loaded_matchparen = 1
@@ -21,8 +21,6 @@ autocmd InsertEnter * se cul
 " 设定默认解码 
 set fenc=utf-8 
 set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936
-
-set lines=40 columns=120
 
 " 不要使用vi的键盘模式，而是vim自己的 
 set nocompatible
@@ -73,7 +71,7 @@ let g:mapleader = ","
 set cursorline 
 
 " 设置魔术
-set magic 
+""set magic 
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
@@ -272,13 +270,13 @@ autocmd FileType css noremap <buffer> <leader>f :call CSSBeautify()<cr>
 "13.repeat.vim插件：重复操作：.
 Bundle 'repeat.vim'
 
-"14 molokai插件：配置颜色
-Bundle 'tomasr/molokai'
-let g:molokai_original = 1
+"14 solarized插件：配置颜色
+Bundle 'altercation/vim-colors-solarized'
 let g:rehash256 = 1
+let g:solarized_termcolors=256
 set t_Co=256
 set background=dark
-colorscheme molokai
+colorscheme solarized
 
 "15. vim-multiple-cursors插件：多行操作
 Bundle 'terryma/vim-multiple-cursors'
@@ -340,16 +338,16 @@ let g:gundo_right = 1
 Bundle 'yonchu/accelerated-smooth-scroll'
 
 "22. syntastic插件：检查语法错误
-Plugin 'scrooloose/syntastic'
-let g:syntastic_check_on_open = 1
-let g:syntastic_error_symbol = 'X'
-let g:syntastic_warning_symbol = '!'
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_enable_highlighting = 0
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+""Plugin 'scrooloose/syntastic'
+""let g:syntastic_check_on_open = 1
+""let g:syntastic_error_symbol = 'X'
+""let g:syntastic_warning_symbol = '!'
+""let g:syntastic_auto_loc_list = 1
+""let g:syntastic_loc_list_height = 5
+""let g:syntastic_enable_highlighting = 0
+""set statusline+=%#warningmsg#
+""set statusline+=%{SyntasticStatuslineFlag()}
+""set statusline+=%*
 
 "23 easymotion 插件：快速移动
 Bundle 'Lokaltog/vim-easymotion'
@@ -419,8 +417,8 @@ nmap <silent> <leader>h :Toc<cr>
 " autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
  "32 VimIM基于Vim的嵌入式中文输入法
- Bundle 'VimIM'
-let g:vimim_cloud = 'google,sogou,baidu,qq'  
-let g:vimim_map = 'tab_as_gi'  
+"" Bundle 'VimIM'
+""let g:vimim_cloud = 'google,sogou,baidu,qq'  
+""let g:vimim_map = 'tab_as_gi'  
 
 imap <c-1> aaa
