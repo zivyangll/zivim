@@ -9,9 +9,9 @@ imap {{ {{
 let loaded_matchparen = 1
 
 "启用缩进折叠
-"set foldmethod=indent
-"set foldcolumn=0
-"set foldlevel=3
+set foldmethod=indent
+set foldcolumn=0
+set foldlevel=3
 set foldenable
 
 " 用浅色高亮当前行 
@@ -71,7 +71,7 @@ let g:mapleader = ","
 set cursorline 
 
 " 设置魔术
-""set magic 
+set magic 
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""" 
@@ -240,15 +240,17 @@ Bundle 'The-NERD-tree'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
  "6. The-NERD-Commenter插件：注释代码
- Bundle 'The-NERD-Commenter'
+Bundle 'The-NERD-Commenter'
 
  "7. Tabular插件：让代码更加易于纵向排版，以=或,符号对齐:Tab /=或者Tab /:或者Tab /|
- Bundle 'godlygeek/tabular'
+Bundle 'godlygeek/tabular'
 
 "8.neocomplcache插件  js语法自动提示 
-Bundle 'Shougo/neocomplcache.vim' 
-let g:neocomplcache_enable_at_startup = 1  "作用：在系统启动的时候启动neo  
-let g:neocomplcache_enable_auto_select = 1 "作用：提示的时候默认选择地一个，如果你设置为0，每次输入都需要用上下键选择，你不妨修改试试效
+""Bundle 'Shougo/neocomplcache.vim' 
+""let g:neocomplcache_enable_at_startup = 1  "作用：在系统启动的时候启动neo  
+""let g:neocomplcache_enable_auto_select = 1 "作用：提示的时候默认选择地一个，如果你设置为0，每次输入都需要用上下键选择，你不妨修改试试效
+
+Bundle 'Valloric/YouCompleteMe'
 
 "9. surround  处理跨多行或者是一些复杂的tag
 Bundle 'tpope/vim-surround'
@@ -311,7 +313,7 @@ let g:gundo_right = 1
 ""更新ctags标签文件快捷键设置
 "noremap <Leader>tl :!ctags -R<CR>
 
-"20. winmanager插件：实现对vim窗口的管理，不需要，taglist对动态语言js支持不好
+"20. winmanager插件：实现对vim窗口的管理，不需要
 "Bundle 'winmanager'
 ""定义打开关闭winmanager快捷键为,w
 "nmap <silent> <Leader>w :WMToggle<cr>
@@ -348,6 +350,7 @@ Bundle 'yonchu/accelerated-smooth-scroll'
 ""set statusline+=%#warningmsg#
 ""set statusline+=%{SyntasticStatuslineFlag()}
 ""set statusline+=%*
+""let g:syntastic_javascript_checkers = ['eslint']
 
 "23 easymotion 插件：快速移动
 Bundle 'Lokaltog/vim-easymotion'
@@ -361,15 +364,15 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
 "24 vim-indent-guides可视化缩进插件，代码显的有些花哨
-"Bundle 'nathanaelkane/vim-indent-guides'
+""Bundle 'nathanaelkane/vim-indent-guides'
 "" 随 vim 自启动
-"let g:indent_guides_enable_on_vim_startup=1
+""let g:indent_guides_enable_on_vim_startup=1
 "" 从第二层开始可视化显示缩进
-"let g:indent_guides_start_level=2
+""let g:indent_guides_start_level=2
 "" 色块宽度
-"let g:indent_guides_guide_size=1
+""let g:indent_guides_guide_size=1
 "" 快捷键 i 开/关缩进可视化
-"nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+""nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 ""let g:indent_guides_auto_colors = 0
 ""autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 ""autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
@@ -420,5 +423,13 @@ nmap <silent> <leader>h :Toc<cr>
 "" Bundle 'VimIM'
 ""let g:vimim_cloud = 'google,sogou,baidu,qq'  
 ""let g:vimim_map = 'tab_as_gi'  
+
+"33 react jsx插件
+Plugin 'mxw/vim-jsx'
+let g:jsx_ext_required = 0 " 让js文件也支持该插件
+
+Plugin 'pangloss/vim-javascript'
+
+"34 eslint js 格式检查
 
 imap <c-1> aaa
