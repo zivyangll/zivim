@@ -1,7 +1,7 @@
-# **常用vim插件**
+# **vimrc**
 ------------------
 ## Install
 
-> $ curl https://raw.githubusercontent.com/yllziv/zivim/master/install.sh | sh
+> $ curl -k https://raw.githubusercontent.com/yllziv/zivim/master/install.sh | sh
 
 
