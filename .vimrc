@@ -250,8 +250,6 @@ Bundle 'godlygeek/tabular'
 ""let g:neocomplcache_enable_at_startup = 1  "作用：在系统启动的时候启动neo  
 ""let g:neocomplcache_enable_auto_select = 1 "作用：提示的时候默认选择地一个，如果你设置为0，每次输入都需要用上下键选择，你不妨修改试试效
 
-Bundle 'Valloric/YouCompleteMe'
-
 "9. surround  处理跨多行或者是一些复杂的tag
 Bundle 'tpope/vim-surround'
 
@@ -340,17 +338,17 @@ let g:gundo_right = 1
 Bundle 'yonchu/accelerated-smooth-scroll'
 
 "22. syntastic插件：检查语法错误
-""Plugin 'scrooloose/syntastic'
-""let g:syntastic_check_on_open = 1
-""let g:syntastic_error_symbol = 'X'
-""let g:syntastic_warning_symbol = '!'
-""let g:syntastic_auto_loc_list = 1
-""let g:syntastic_loc_list_height = 5
-""let g:syntastic_enable_highlighting = 0
-""set statusline+=%#warningmsg#
-""set statusline+=%{SyntasticStatuslineFlag()}
-""set statusline+=%*
-""let g:syntastic_javascript_checkers = ['eslint']
+Plugin 'scrooloose/syntastic'
+let g:syntastic_check_on_open = 1
+let g:syntastic_error_symbol = 'X'
+let g:syntastic_warning_symbol = '!'
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_enable_highlighting = 0
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_javascript_checkers = ['eslint']
 
 "23 easymotion 插件：快速移动
 Bundle 'Lokaltog/vim-easymotion'
@@ -363,19 +361,19 @@ omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
-"24 vim-indent-guides可视化缩进插件，代码显的有些花哨
-""Bundle 'nathanaelkane/vim-indent-guides'
-"" 随 vim 自启动
-""let g:indent_guides_enable_on_vim_startup=1
-"" 从第二层开始可视化显示缩进
-""let g:indent_guides_start_level=2
-"" 色块宽度
-""let g:indent_guides_guide_size=1
-"" 快捷键 i 开/关缩进可视化
-""nmap <silent> <Leader>i <Plug>IndentGuidesToggle
-""let g:indent_guides_auto_colors = 0
-""autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-""autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+24 vim-indent-guides可视化缩进插件，代码显的有些花哨
+Bundle 'nathanaelkane/vim-indent-guides'
+" 随 vim 自启动
+let g:indent_guides_enable_on_vim_startup=1
+" 从第二层开始可视化显示缩进
+let g:indent_guides_start_level=2
+" 色块宽度
+let g:indent_guides_guide_size=1
+" 快捷键 i 开/关缩进可视化
+nmap <silent> <Leader>i <Plug>IndentGuidesToggle
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 "25. ShowMarks 高亮标记位置
  Bundle 'ShowMarks'
@@ -413,23 +411,11 @@ let g:vim_markdown_folding_disabled=1
  au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}   set filetype=mkd 
 nmap <silent> <leader>h :Toc<cr> 
 
-"31 markdown实时预览，需要再打开
-"Bundle 'suan/vim-instant-markdown'
-"let g:instant_markdown_slow = 1
-"let g:instant_markdown_autostart = 1
-" autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
- "32 VimIM基于Vim的嵌入式中文输入法
-"" Bundle 'VimIM'
-""let g:vimim_cloud = 'google,sogou,baidu,qq'  
-""let g:vimim_map = 'tab_as_gi'  
-
 "33 react jsx插件
 Plugin 'mxw/vim-jsx'
 let g:jsx_ext_required = 0 " 让js文件也支持该插件
 
 Plugin 'pangloss/vim-javascript'
 
-"34 eslint js 格式检查
 
 imap <c-1> aaa
