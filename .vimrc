@@ -14,6 +14,10 @@ set foldcolumn=0
 set foldlevel=3
 set foldenable
 
+" 设置窗口大小
+set lines=45
+set columns=170
+
 " 用浅色高亮当前行 
 autocmd InsertLeave * se nocul 
 autocmd InsertEnter * se cul 
@@ -53,12 +57,12 @@ set iskeyword+=_,$,@,%,#,-
 syntax on
 
 "打开javascript折叠
-let b:javascript_fold=1	 
+let b:javascript_fold=1  
 "打开javascript对dom、html和css的支持
 let javascript_enable_domhtmlcss=1
 
 "设置字体
-set guifont=Monaco:h10
+set guifont=Monaco:h14
 
 "设置颜色
 let g:molokai_original = 1
@@ -197,7 +201,7 @@ let javascript_enable_domhtmlcss=1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "0. vundle插件：管理其他插件
 set rtp+=~/.vim/bundle/vundle/  
-call vundle#rc() 
+call vundle#begin()
 Bundle 'gmarik/vundle'  
 filetype plugin indent on 
 
@@ -206,17 +210,17 @@ Bundle 'mattn/emmet-vim'
 "let g:user_emmet_expandabbr_key = '<Tab>'
 "为你用的语言自定义行为
 let g:user_emmet_settings = {
-			\ 'php' : {
-			\ 'extends' : 'html',
-			\ 'filters' : 'c',
-			\ },
-			\ 'xml' : {
-			\ 'extends' : 'html',
-			\ },
-			\ 'haml' : {
-			\ 'extends' : 'html',
-			\ },
-			\}
+      \ 'php' : {
+      \ 'extends' : 'html',
+      \ 'filters' : 'c',
+      \ },
+      \ 'xml' : {
+      \ 'extends' : 'html',
+      \ },
+      \ 'haml' : {
+      \ 'extends' : 'html',
+      \ },
+      \}
 "2.AutoClose插件： 在输入()，""等需要配对的符号时，自动帮你补全剩余半个
 "<leader>a 关闭该功能
 Bundle 'AutoClose'
@@ -238,17 +242,13 @@ Bundle 'The-NERD-tree'
  let NERDTreeShowBookmarks=1
  " 只剩 NERDTree时自动关闭
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let NERDTreeIgnore=['\.pyc$', '\~$', 'node_modules'] "ignore files in NERDTree
 
  "6. The-NERD-Commenter插件：注释代码
 Bundle 'The-NERD-Commenter'
 
  "7. Tabular插件：让代码更加易于纵向排版，以=或,符号对齐:Tab /=或者Tab /:或者Tab /|
 Bundle 'godlygeek/tabular'
-
-"8.neocomplcache插件  js语法自动提示 
-""Bundle 'Shougo/neocomplcache.vim' 
-""let g:neocomplcache_enable_at_startup = 1  "作用：在系统启动的时候启动neo  
-""let g:neocomplcache_enable_auto_select = 1 "作用：提示的时候默认选择地一个，如果你设置为0，每次输入都需要用上下键选择，你不妨修改试试效
 
 "9. surround  处理跨多行或者是一些复杂的tag
 Bundle 'tpope/vim-surround'
@@ -274,6 +274,8 @@ Bundle 'repeat.vim'
 Bundle 'altercation/vim-colors-solarized'
 let g:rehash256 = 1
 let g:solarized_termcolors=256
+let g:solarized_contrast="high"
+let g:solarized_visibility="high"
 set t_Co=256
 set background=dark
 colorscheme solarized
@@ -289,11 +291,7 @@ Bundle 'mbriggs/mark.vim'
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|coverage|target|dist)|(\.(swp|ico|git|svn))$'
 
 "18. gundo插件：编辑文件的时光机器
 Bundle 'sjl/gundo.vim'
@@ -301,38 +299,6 @@ nnoremap <Leader>u :GundoToggle<CR>
 let g:gundo_width = 40
 let g:gundo_preview_height = 10
 let g:gundo_right = 1
-
-"19. taglist.vim插件：，js不需要，支持不好
-"Bundle 'taglist.vim'
-""不同时显示多个文件的tag，仅显示一个
-"let Tlist_Show_One_File = 1
-""taglist为最后一个窗口时，退出vim
-"let Tlist_Exit_OnlyWindow = 1
-""更新ctags标签文件快捷键设置
-"noremap <Leader>tl :!ctags -R<CR>
-
-"20. winmanager插件：实现对vim窗口的管理，不需要
-"Bundle 'winmanager'
-""定义打开关闭winmanager快捷键为,w
-"nmap <silent> <Leader>w :WMToggle<cr>
-""在进入vim时自动打开winmanager
-"let g:AutoOpenWinManager = 1
-""设置winmanager的宽度，默认为25
-"let g:winManagerWidth = 30
-"
-"let g:NERDTree_title="[NERDTree]"
-"" 设置界面分割
-"let g:winManagerWindowLayout="NERDTree|TagList"
-"
-"function! NERDTree_Start()
-"    exec 'NERDTree'
-"endfunction
-"
-"function! NERDTree_IsValid()
-"    return 1
-"endfunction
-""自动退出Winmanager
-"autocmd bufenter * if (winnr("$") == 2 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary")  | qa | endif
 
 "21 accelerated-smooth-scroll:平滑滚动插件
 Bundle 'yonchu/accelerated-smooth-scroll'
@@ -361,19 +327,12 @@ omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
-24 vim-indent-guides可视化缩进插件，代码显的有些花哨
+"24 vim-indent-guides可视化缩进插件，代码显的有些花哨
 Bundle 'nathanaelkane/vim-indent-guides'
 " 随 vim 自启动
 let g:indent_guides_enable_on_vim_startup=1
-" 从第二层开始可视化显示缩进
-let g:indent_guides_start_level=2
 " 色块宽度
 let g:indent_guides_guide_size=1
-" 快捷键 i 开/关缩进可视化
-nmap <silent> <Leader>i <Plug>IndentGuidesToggle
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 "25. ShowMarks 高亮标记位置
  Bundle 'ShowMarks'
@@ -400,10 +359,6 @@ let g:Poerline_symbols='unicode'
 "28. html5
 Plugin 'othree/html5.vim'
 
-"29 skammer/vim-css-color 影响打开html速度
-"Bundle 'skammer/vim-css-color'
-"let g:cssColorVimDoNotMessMyUpdatetime = 1
-
 "30 plasticboy/vim-markdown
 Plugin 'plasticboy/vim-markdown'
 let g:vim_markdown_frontmatter=1
@@ -416,6 +371,10 @@ Plugin 'mxw/vim-jsx'
 let g:jsx_ext_required = 0 " 让js文件也支持该插件
 
 Plugin 'pangloss/vim-javascript'
+Plugin 'groenewege/vim-less'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'hail2u/vim-css3-syntax'
 
-
-imap <c-1> aaa
+call vundle#end()
+filetype plugin indent on
+autocmd! bufwritepost .vimrc source %
