@@ -174,8 +174,10 @@ Plugin 'scrooloose/syntastic' " 检查语法错误
 Plugin 'jistr/vim-nerdtree-tabs' " nerdtree 打开标签时保持目录
 Plugin 'editorconfig/editorconfig-vim' " 支持editorconfig
 Plugin 'Raimondi/delimitMate' " 括号自动补全
-" 修改.vim/bundle/vim-airline/autoload/airline/extensions.vim： \ 'nerdtree': [ '%{getline(".")}', '' ],
+" 修改.vim/bundle/vim-airline/autoload/airline/extensions.vim：
+" 'nerdtree': [ '%{exists("b:NERDTreeRoot")?b:NERDTreeRoot.path.str():""}', '' ],
 Plugin 'vim-airline/vim-airline' " 状态栏
 Plugin 'vim-airline/vim-airline-themes' " 状态栏主题
 
 call vundle#end()
+
