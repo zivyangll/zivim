@@ -24,7 +24,7 @@ set history=1000 " history文件中需要记录的行数
 set confirm " 在处理未保存或只读文件的时候，弹出确认 
 set viminfo+=! " 保存全局变量 
 set iskeyword+=_,$,@,%,#,- " 带有如下符号的单词不要被换行分割 
-set guifont=Monaco:h18 "设置字体
+set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h18 "设置字体
 set cursorline " 突出显示当前行和列
 set cursorcolumn
 set magic " 设置魔术
@@ -53,11 +53,10 @@ set hlsearch  "搜索逐字符高亮
 set incsearch " 在搜索时，输入的词句的逐字符高亮（类似firefox的搜索） 
 set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离 
 set novisualbell " 不要闪烁 
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}\ %{ALEGetStatusLine()} " 我的状态行显示的内容（包括文件类型和解码） 
 set laststatus=2 " 总是显示状态行 
 set number " 显示行号
 set relativenumber " 显示相对行号，方便跳转
-set list listchars=tab:▸\ ,trail:., " 方便显示tab 和 空格
+set list listchars=trail:., " 方便显示tab 和 空格
 set formatoptions=tcrqn " 自动格式化 
 set autoindent " 继承前一行的缩进方式，特别适用于多行注释 
 set smartindent " 智能自动缩进
@@ -66,7 +65,7 @@ set tabstop=2 " 制表符为2
 set softtabstop=2 " 统一缩进为2
 set shiftwidth=2 " 统一缩进为2
 set expandtab " 用空格代替制表符 
-set wrap " 换行 
+set nowrap " 不换行 
 set smarttab " 在行和段开始处使用制表符 
 set rtp+=~/.vim/bundle/vundle/  " 使用 vundle 插件
 set background=dark
@@ -74,9 +73,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set fillchars+=stl:\ ,stlnc:\
 set t_Co=256
 set fo+=mB "对亚洲语言断行支持
-set statusline+=%#warningmsg# " syntastic
-set statusline+=%{SyntasticStatuslineFlag()} " syntastic
-set statusline+=%* " syntastic
 
 let b:javascript_fold=1  "打开javascript折叠
 let javascript_enable_domhtmlcss=1 "打开javascript对dom、html和css的支持
@@ -91,7 +87,6 @@ let g:ctrlp_custom_ignore = '\v[\/](node_modules|coverage|target|dist)|(\.(swp|i
 let g:indent_guides_enable_on_vim_startup=1 " vim-indent-guides 随 vim 自启动
 let g:indent_guides_guide_size=1 " vim-indent-guides 色块宽度
 let g:gundo_right = 1 " gundo插件
-let g:Powerline_symbols='unicode' " vim-powerline插件
 let g:jsx_ext_required = 0 " vim-jsx插件 让js文件也支持jsx插件
 let g:vim_markdown_frontmatter=1 " vim-markdown
 let g:vim_markdown_toc_autofit = 1 " vim-markdown
@@ -104,13 +99,18 @@ let NERDTreeShowLineNumbers=1 " The-NERD-tree
 let NERDTreeIgnore=['\.pyc$', '\~$', '.DS_Store', '\.swp'] "ignore files in NERDTree " The-NERD-tree
 let NERDTreeShowBookmarks=1 " The-NERD-tree
 let g:syntastic_check_on_open = 0 " syntastic
-let g:syntastic_error_symbol = '✘' " syntastic
-let g:syntastic_warning_symbol = '➤' " syntastic
+let g:syntastic_error_symbol = 'x' " syntastic
+let g:syntastic_warning_symbol = '!' " syntastic
 let g:syntastic_auto_loc_list = 0 " syntastic
 let g:syntastic_enable_highlighting = 0 " syntastic
 let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint') " syntastic
 let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '') " syntastic
 let g:nerdtree_tabs_smart_startup_focus=2
+let g:airline_powerline_fonts = 1 " airline
+let g:airline#extensions#tabline#enabled = 1 " airline 启用 buffer
+let g:airline#extensions#tabline#buffer_nr_show = 1 " airline tabline中buffer显示编号
+let g:airline_theme="solarized" " airline 主题
+let NERDTreeStatusline="%{matchstr(getline('.'), '\\s\\zs\\w\\(.*\\)')}"
 
 autocmd! bufwritepost .vimrc source %
 autocmd InsertLeave * se nocul  " 用浅色高亮当前行 
@@ -132,6 +132,8 @@ nmap <leader>h :Toc<cr>  " vim-markdown
 map  / <Plug>(easymotion-sn) " vim-easymotion
 map  n <Plug>(easymotion-next) " vim-easymotion
 map  N <Plug>(easymotion-prev) " vim-easymotion
+nnoremap <C-tab> :bn<CR> " vim-airline 切换buffer
+nnoremap <C-s-tab> :bp<CR> " vim-airline 切换buffer
 
 call vundle#begin()
 Plugin 'gmarik/vundle'  " 管理其他插件 :bundleInstall
@@ -159,7 +161,6 @@ Plugin 'mattn/emmet-vim' " HTML生成<c-y>, 选中标签<c-y>d，跳转<c-y>n，
 Plugin 'scrooloose/nerdcommenter' " ,ci ：切换选中行的注释状态
 Plugin 'sjl/gundo.vim'  "编辑文件的时光机器 p对比，回车或者o选择
 Plugin 'nathanaelkane/vim-indent-guides' " 可视化缩进插件
-Plugin 'Lokaltog/vim-powerline' " 华丽的状态栏
 Plugin 'mxw/vim-jsx' " react jsx插件
 Plugin 'mileszs/ack.vim' " 全文搜索：安装：brew install ack 
 Plugin 'posva/vim-vue' " 语法高亮
@@ -172,6 +173,9 @@ Plugin 'Lokaltog/vim-easymotion' " 快速移动 ,,w ,,j ,,k ,,f
 Plugin 'scrooloose/syntastic' " 检查语法错误
 Plugin 'jistr/vim-nerdtree-tabs' " nerdtree 打开标签时保持目录
 Plugin 'editorconfig/editorconfig-vim' " 支持editorconfig
+Plugin 'Raimondi/delimitMate' " 括号自动补全
+" 修改.vim/bundle/vim-airline/autoload/airline/extensions.vim： \ 'nerdtree': [ '%{getline(".")}', '' ],
+Plugin 'vim-airline/vim-airline' " 状态栏
+Plugin 'vim-airline/vim-airline-themes' " 状态栏主题
 
 call vundle#end()
-
