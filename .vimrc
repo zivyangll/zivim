@@ -55,8 +55,7 @@ set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离
 set novisualbell " 不要闪烁 
 set laststatus=2 " 总是显示状态行 
 set number " 显示行号
-set relativenumber " 显示相对行号，方便跳转
-set list listchars=trail:., " 方便显示tab 和 空格
+set list listchars=trail:·, " 方便显示tab 和 空格
 set formatoptions=tcrqn " 自动格式化 
 set autoindent " 继承前一行的缩进方式，特别适用于多行注释 
 set smartindent " 智能自动缩进
@@ -73,6 +72,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set fillchars+=stl:\ ,stlnc:\
 set t_Co=256
 set fo+=mB "对亚洲语言断行支持
+set completeopt-=preview " YouCompleteMe 不显示预览窗口
 
 let b:javascript_fold=1  "打开javascript折叠
 let javascript_enable_domhtmlcss=1 "打开javascript对dom、html和css的支持
@@ -108,7 +108,6 @@ let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{
 let g:nerdtree_tabs_smart_startup_focus=2
 let g:airline_powerline_fonts = 1 " airline
 let g:airline#extensions#tabline#enabled = 1 " airline 启用 buffer
-let g:airline#extensions#tabline#buffer_nr_show = 1 " airline tabline中buffer显示编号
 let g:airline_theme="solarized" " airline 主题
 let NERDTreeStatusline="%{matchstr(getline('.'), '\\s\\zs\\w\\(.*\\)')}"
 
@@ -124,16 +123,16 @@ autocmd FileType css noremap <buffer> <leader>b :call CSSBeautify()<cr> " jsbeau
 autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['standard'] " syntastic
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd  " vim-markdown
 
-map <Leader>w :NERDTreeToggle<CR> " The-NERD-tree 调出/隐藏 NERDTree
-map <leader>b :call JsxBeautify()<cr> " jsbeautify'
-map <leader>f :Ack -i  " ack.vim插件
-nnoremap <Leader>u :GundoToggle<CR> " gundo插件
-nmap <leader>h :Toc<cr>  " vim-markdown
-map  / <Plug>(easymotion-sn) " vim-easymotion
-map  n <Plug>(easymotion-next) " vim-easymotion
-map  N <Plug>(easymotion-prev) " vim-easymotion
-nnoremap <C-tab> :bn<CR> " vim-airline 切换buffer
-nnoremap <C-s-tab> :bp<CR> " vim-airline 切换buffer
+map <Leader>w :NERDTreeToggle<CR>
+map <leader>b :call JsxBeautify()<cr>
+map <leader>f :Ack -i 
+nnoremap <Leader>u :GundoToggle<CR>
+nmap <leader>h :Toc<cr>
+map  / <Plug>(easymotion-sn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+nnoremap <C-tab> :bn<CR>
+nnoremap <C-s-tab> :bp<CR>
 
 call vundle#begin()
 Plugin 'gmarik/vundle'  " 管理其他插件 :bundleInstall

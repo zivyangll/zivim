@@ -3,6 +3,7 @@ echo Install Starting …
 rm -rf ~/.vim* ~/.vimrc
 git clone https://github.com/yllziv/zivim.git ~/.vim --depth=1
 ln -s ~/.vim/.vimrc ~/.vimrc
+mv ~/.vim/.tern-config ~
 mkdir ~/.vim/undo
 git clone https://github.com/powerline/fonts.git --depth=1
 cd fonts
