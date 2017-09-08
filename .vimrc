@@ -55,7 +55,7 @@ set scrolloff=3 " 光标移动到buffer的顶部和底部时保持3行距离
 set novisualbell " 不要闪烁 
 set laststatus=2 " 总是显示状态行 
 set number " 显示行号
-set list listchars=trail:·, " 方便显示tab 和 空格
+set list listchars=trail:๏, " 方便显示tab 和 空格
 set formatoptions=tcrqn " 自动格式化 
 set autoindent " 继承前一行的缩进方式，特别适用于多行注释 
 set smartindent " 智能自动缩进
@@ -72,7 +72,6 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set fillchars+=stl:\ ,stlnc:\
 set t_Co=256
 set fo+=mB "对亚洲语言断行支持
-set completeopt-=preview " YouCompleteMe 不显示预览窗口
 
 let b:javascript_fold=1  "打开javascript折叠
 let javascript_enable_domhtmlcss=1 "打开javascript对dom、html和css的支持
@@ -98,17 +97,7 @@ let NERDTreeWinPos="left" " The-NERD-tree
 let NERDTreeShowLineNumbers=1 " The-NERD-tree
 let NERDTreeIgnore=['\.pyc$', '\~$', '.DS_Store', '\.swp'] "ignore files in NERDTree " The-NERD-tree
 let NERDTreeShowBookmarks=1 " The-NERD-tree
-let g:syntastic_check_on_open = 0 " syntastic
-let g:syntastic_error_symbol = 'x' " syntastic
-let g:syntastic_warning_symbol = '!' " syntastic
-let g:syntastic_auto_loc_list = 0 " syntastic
-let g:syntastic_enable_highlighting = 0 " syntastic
-let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint') " syntastic
-let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '') " syntastic
 let g:nerdtree_tabs_smart_startup_focus=2
-let g:airline_powerline_fonts = 1 " airline
-let g:airline#extensions#tabline#enabled = 1 " airline 启用 buffer
-let g:airline_theme="solarized" " airline 主题
 let NERDTreeStatusline="%{matchstr(getline('.'), '\\s\\zs\\w\\(.*\\)')}"
 
 autocmd! bufwritepost .vimrc source %
@@ -117,14 +106,9 @@ autocmd InsertEnter * se cul
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css " vim-vue插件
 autocmd VimEnter * NERDTree | wincmd p " The-NERD-tree 默认启动，打开后光标在编辑文件中
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif " 自动关闭
-autocmd FileType javascript noremap <buffer> <leader>b :call JsxBeautify()<cr> " jsbeautify
-autocmd FileType html noremap <buffer> <leader>b :call HtmlBeautify()<cr> " jsbeautify
-autocmd FileType css noremap <buffer> <leader>b :call CSSBeautify()<cr> " jsbeautify
-autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['standard'] " syntastic
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd  " vim-markdown
 
 map <Leader>w :NERDTreeToggle<CR>
-map <leader>b :call JsxBeautify()<cr>
 map <leader>f :Ack -i 
 nnoremap <Leader>u :GundoToggle<CR>
 nmap <leader>h :Toc<cr>
@@ -145,7 +129,6 @@ Plugin 'matchit.zip' " 在()，""以及HTML标签之间快速跳转,ctrl+%
 Plugin 'gregsexton/MatchTag' " 高亮两个配对的tag
 Plugin 'spiiph/vim-space' " 空格处理
 Plugin 'vim-scripts/trailing-whitespace' " 空格处理
-Plugin 'ternjs/tern_for_vim' " 自动补全
 Plugin 'pangloss/vim-javascript' " 语法高亮
 Plugin 'groenewege/vim-less' " 语法高亮
 Plugin 'jelera/vim-javascript-syntax' " 语法高亮
@@ -163,20 +146,11 @@ Plugin 'nathanaelkane/vim-indent-guides' " 可视化缩进插件
 Plugin 'mxw/vim-jsx' " react jsx插件
 Plugin 'mileszs/ack.vim' " 全文搜索：安装：brew install ack 
 Plugin 'posva/vim-vue' " 语法高亮
-Plugin 'Valloric/YouCompleteMe' " 自动补全
 Plugin 'The-NERD-tree' " 树状显示文件目录 ,w切换
-Plugin 'maksimr/vim-jsbeautify' " js代码格式化
-Plugin 'einars/js-beautify' " js代码格式化
 Plugin 'plasticboy/vim-markdown'  " ]]下一标题，[[:上一标题，][下一子标题，[]上一子标题 ，]c当前标题，]u父标题（asdf），<leader>h 进入目录
 Plugin 'Lokaltog/vim-easymotion' " 快速移动 ,,w ,,j ,,k ,,f
-Plugin 'scrooloose/syntastic' " 检查语法错误
 Plugin 'jistr/vim-nerdtree-tabs' " nerdtree 打开标签时保持目录
 Plugin 'editorconfig/editorconfig-vim' " 支持editorconfig
 Plugin 'Raimondi/delimitMate' " 括号自动补全
-" 修改.vim/bundle/vim-airline/autoload/airline/extensions.vim：
-" 'nerdtree': [ '%{exists("b:NERDTreeRoot")?b:NERDTreeRoot.path.str():""}', '' ],
-Plugin 'vim-airline/vim-airline' " 状态栏
-Plugin 'vim-airline/vim-airline-themes' " 状态栏主题
 
 call vundle#end()
-
