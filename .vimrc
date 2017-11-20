@@ -95,10 +95,11 @@ let NERDTreeShowFiles=1 " The-NERD-tree
 let NERDTreeWinPos=1 " The-NERD-tree
 let NERDTreeWinPos="left" " The-NERD-tree
 let NERDTreeShowLineNumbers=1 " The-NERD-tree
-let NERDTreeIgnore=['\.pyc$', '\~$', '.DS_Store', '\.swp'] "ignore files in NERDTree " The-NERD-tree
+let NERDTreeIgnore=['\.pyc$', '\~$', '.DS_Store', '\.swp' ] "ignore files in NERDTree " The-NERD-tree
 let NERDTreeShowBookmarks=1 " The-NERD-tree
 let g:nerdtree_tabs_smart_startup_focus=2
 let NERDTreeStatusline="%{matchstr(getline('.'), '\\s\\zs\\w\\(.*\\)')}"
+let NERDSpaceDelims=1 " nerdcommenter 注释添加空格
 
 autocmd! bufwritepost .vimrc source %
 autocmd InsertLeave * se nocul  " 用浅色高亮当前行 
@@ -109,7 +110,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd  " vim-markdown
 
 map <Leader>w :NERDTreeToggle<CR>
-map <leader>f :Ack -i 
 nnoremap <Leader>u :GundoToggle<CR>
 nmap <leader>h :Toc<cr>
 map  / <Plug>(easymotion-sn)
@@ -144,7 +144,6 @@ Plugin 'scrooloose/nerdcommenter' " ,ci ：切换选中行的注释状态
 Plugin 'sjl/gundo.vim'  "编辑文件的时光机器 p对比，回车或者o选择
 Plugin 'nathanaelkane/vim-indent-guides' " 可视化缩进插件
 Plugin 'mxw/vim-jsx' " react jsx插件
-Plugin 'mileszs/ack.vim' " 全文搜索：安装：brew install ack 
 Plugin 'posva/vim-vue' " 语法高亮
 Plugin 'The-NERD-tree' " 树状显示文件目录 ,w切换
 Plugin 'plasticboy/vim-markdown'  " ]]下一标题，[[:上一标题，][下一子标题，[]上一子标题 ，]c当前标题，]u父标题（asdf），<leader>h 进入目录
@@ -154,3 +153,5 @@ Plugin 'editorconfig/editorconfig-vim' " 支持editorconfig
 Plugin 'Raimondi/delimitMate' " 括号自动补全
 
 call vundle#end()
+
+
