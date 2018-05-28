@@ -64,7 +64,7 @@ set tabstop=2 " 制表符为2
 set softtabstop=2 " 统一缩进为2
 set shiftwidth=2 " 统一缩进为2
 set expandtab " 用空格代替制表符
-set nowrap " 不换行 
+set wrap " 换行
 set smarttab " 在行和段开始处使用制表符
 set rtp+=~/.vim/bundle/vundle/  " 使用 vundle 插件
 set background=dark
@@ -120,6 +120,12 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 nnoremap <C-tab> :bn<CR>
 nnoremap <C-s-tab> :bp<CR>
+
+" Change cursor shape between insert and normal mode in iTerm2.app
+if $TERM_PROGRAM =~ "iTerm"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
 
 call vundle#begin()
 Plugin 'gmarik/vundle'  " 管理其他插件 :bundleInstall
