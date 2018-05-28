@@ -16,7 +16,7 @@ set foldcolumn=0
 set foldlevel=3
 set foldenable
 " set lines=30 " 设置窗口大小 git rebase -i 操作会异常，先注释
-set columns=120
+" set columns=120 " 设置列数会导致下一行出现异常色块
 set fenc=utf-8 " 设定默认解码
 set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936
 set nocompatible " 不要使用vi的键盘模式，而是vim自己的
@@ -85,6 +85,9 @@ let g:ctrlp_working_path_mode = 'ra' " ctrlp插件配置
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|coverage|target|dist)|(\.(swp|ico|git|svn))$' " ctrlp插件配置
 let g:indent_guides_enable_on_vim_startup=1 " vim-indent-guides 随 vim 自启动
 let g:indent_guides_guide_size=1 " vim-indent-guides 色块宽度
+let g:indent_guides_start_level=2 " vim-indent-guides
+let g:indent_guides_auto_colors = 0 " 手动配色
+hi IndentGuidesOdd  ctermbg=black " 奇数列设置为黑色
 let g:gundo_right = 1 " gundo插件
 let g:jsx_ext_required = 0 " vim-jsx插件 让js文件也支持jsx插件
 let g:vim_markdown_frontmatter=1 " vim-markdown
@@ -105,7 +108,7 @@ autocmd! bufwritepost .vimrc source %
 autocmd InsertLeave * se nocul  " 用浅色高亮当前行
 autocmd InsertEnter * se cul
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css " vim-vue插件
-autocmd VimEnter * NERDTree | wincmd p " The-NERD-tree 默认启动，打开后光标在编辑文件中
+" autocmd VimEnter * NERDTree | wincmd p " The-NERD-tree 默认启动，打开后光标在编辑文件中
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif " 自动关闭
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd  " vim-markdown
 

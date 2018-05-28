@@ -1,4 +1,5 @@
 #!/bin/bash
+
 echo Install Starting …
 rm -rf ~/.vim* ~/.vimrc
 git clone https://github.com/yllziv/zivim.git ~/.vim --depth=1
