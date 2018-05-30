@@ -3,6 +3,7 @@ colorscheme solarized
 filetype plugin indent on " 为特定文件类型载入相关缩进文件
 filetype on " 载入文件类型插件
 
+set clipboard=unnamed " Mac 下共享剪切板
 set undofile " vim退出并在下次打开后仍然保留上次的undo历史
 set undodir=$HOME/.vim/undo " 需要提前创建该目录，否则不会生效
 set undolevels=1000 " max number of undos
