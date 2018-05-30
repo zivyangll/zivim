@@ -31,7 +31,7 @@ set cursorcolumn
 set magic " 设置魔术
 set nobackup " 不要备份文件
 set nowb
-set noswapfile " 不要生成swap文件，当buffer被丢弃的时候隐藏它
+" set noswapfile " 不要生成swap文件，当buffer被丢弃的时候隐藏它
 set bufhidden=hide
 set linespace=0 " 字符间插入的像素行数目
 set wildmenu " 增强模式中的命令行自动完成操作
