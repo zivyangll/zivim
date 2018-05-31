@@ -16,8 +16,6 @@ set foldmethod=manual "启用缩进折叠
 set foldcolumn=0
 set foldlevel=3
 set foldenable
-" set lines=30 " 设置窗口大小 git rebase -i 操作会异常，先注释
-" set columns=120 " 设置列数会导致下一行出现异常色块
 set fenc=utf-8 " 设定默认解码
 set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936
 set nocompatible " 不要使用vi的键盘模式，而是vim自己的
@@ -31,7 +29,6 @@ set cursorcolumn
 set magic " 设置魔术
 set nobackup " 不要备份文件
 set nowb
-" set noswapfile " 不要生成swap文件，当buffer被丢弃的时候隐藏它
 set bufhidden=hide
 set linespace=0 " 字符间插入的像素行数目
 set wildmenu " 增强模式中的命令行自动完成操作
@@ -109,7 +106,6 @@ autocmd! bufwritepost .vimrc source %
 autocmd InsertLeave * se nocul  " 用浅色高亮当前行
 autocmd InsertEnter * se cul
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css " vim-vue插件
-" autocmd VimEnter * NERDTree | wincmd p " The-NERD-tree 默认启动，打开后光标在编辑文件中
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif " 自动关闭
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd  " vim-markdown
 
@@ -122,7 +118,7 @@ map  N <Plug>(easymotion-prev)
 nnoremap <C-tab> :bn<CR>
 nnoremap <C-s-tab> :bp<CR>
 
-" Change cursor shape between insert and normal mode in iTerm2.app
+" 在 iTerm2 中编辑模式和普通模式中切换光标样式
 if $TERM_PROGRAM =~ "iTerm"
     let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
     let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode

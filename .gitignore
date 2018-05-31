@@ -7,3 +7,5 @@ Thumbs.db
 .netrwhist
 *.sw*
 *.un~
+package.json
+package-lock.json
