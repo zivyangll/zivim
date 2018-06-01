@@ -29,12 +29,9 @@ set cursorcolumn
 set magic " 设置魔术
 set nobackup " 不要备份文件
 set nowb
-" set noswapfile " 不要生成swap文件，当buffer被丢弃的时候隐藏它
 set bufhidden=hide
 set linespace=0 " 字符间插入的像素行数目
 set wildmenu " 增强模式中的命令行自动完成操作
-set ruler " 在状态行上显示光标所在位置的行号和列号
-set rulerformat=%20(%2*%<%f%=\ %m%r\ %3l\ %c\ %p%%%)
 set showcmd  " 输入的命令显示出来，看的清楚些
 set cmdheight=1 " 命令行（在状态行下）的高度，默认为1，这里是2
 set backspace=2 " 使回格键（backspace）正常处理indent, eol, start等
@@ -42,7 +39,7 @@ set whichwrap+=<,>,h,l " 允许backspace和光标键跨越行边界
 set mouse=a " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
 set shortmess=atI " 启动的时候不显示那个援助索马里儿童的提示
 set report=0 " 通过使用: commands命令，告诉我们文件的哪一行被改变过
-set noerrorbells " 不让vim发出讨厌的滴滴声
+set noerrorbells " 不让vim发出的滴滴声
 set showmatch " 高亮显示匹配的括号
 set matchtime=2 " 匹配括号高亮的时间（单位是十分之一秒）
 set ignorecase " 在搜索的时候忽略大小写
@@ -55,8 +52,7 @@ set novisualbell " 不要闪烁
 set laststatus=2 " 总是显示状态行
 set number " 显示行号
 set list listchars=trail:๏, " 方便显示tab 和 空格
-set formatoptions=tcrqn " 自动格式化
-set autoindent " 继承前一行的缩进方式，特别适用于多行注释
+set autoindent " 继承前一行的缩进方式
 set smartindent " 智能自动缩进
 set cindent shiftwidth=2 " 自动缩进2空格
 set tabstop=2 " 制表符为2
@@ -112,11 +108,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd  " vim-markdown
 
 map <Leader>w :NERDTreeToggle<CR>
-nnoremap <Leader>u :GundoToggle<CR>
+nnoremap <Leader>u :UndotreeToggle<CR>
 nmap <leader>h :Toc<cr>
-map  / <Plug>(easymotion-sn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
 nnoremap <C-tab> :bn<CR>
 nnoremap <C-s-tab> :bp<CR>
 
@@ -132,36 +125,37 @@ if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
 
 call vundle#begin()
 Plugin 'gmarik/vundle'  " 管理其他插件 :bundleInstall
+
+" 操作型插件
 Plugin 'mbriggs/mark.vim' " ,m高亮 ,n去除高亮 ,/下一个标签
-Plugin 'tpope/vim-surround' " 处理跨多行或者是一些复杂的tag
-Plugin 'msanders/snipmate.vim'  " js代码自动补全插件
-Plugin 'docunext/closetag.vim' " 提供标签自动闭合
 Plugin 'repeat.vim' " 重复操作：.
-Plugin 'matchit.zip' " 在()，""以及HTML标签之间快速跳转,ctrl+%
+Plugin 'matchit.zip' " 在()，""以及HTML标签之间快速跳转 <c-%>
+Plugin 'terryma/vim-multiple-cursors' " 多行操作 <c-n>
+Plugin 'kien/ctrlp.vim' " 模糊查询打开文件 <c-p>
+Plugin 'scrooloose/nerdcommenter' " ,ci ：切换选中行的注释状态
+Plugin 'scrooloose/nerdtree' " 树状显示文件目录 ,w切换,oxcst, 切换窗口 <c-w>
+Plugin 'mattn/emmet-vim' " HTML生成<c-y>, 选中标签<c-y>d，跳转<c-y>n，注释：<c-y>/，合并标签：<c-y>j，移除标签对：<c-y>k
+Plugin 'tpope/vim-surround' " 换 cs"' 删 ds" 增 ysiw) 多空格 ysiw( 整行 yss
+Plugin 'mbbill/undotree'  "编辑文件的时光机器 打开,u 恢复上一步u 撤销 <c+r>
+Plugin 'plasticboy/vim-markdown'  " ]]下一标题，[[:上一标题，][下一子标题，[]上一子标题 ，]c当前，]u父（asdf），<leader>h 目录 Enter进入
+
+" 展示型插件
 Plugin 'gregsexton/MatchTag' " 高亮两个配对的tag
-Plugin 'spiiph/vim-space' " 空格处理
+Plugin 'Xuyuanp/nerdtree-git-plugin' " nerdtree Git 标签提示
+Plugin 'airblade/vim-gitgutter' " Git 提示
+Plugin 'altercation/vim-colors-solarized' " 配置颜色
+Plugin 'vim-airline/vim-airline' " 状态栏
+Plugin 'nathanaelkane/vim-indent-guides' " 可视化缩进插件
 Plugin 'vim-scripts/trailing-whitespace' " 空格处理
 Plugin 'pangloss/vim-javascript' " 语法高亮
 Plugin 'groenewege/vim-less' " 语法高亮
 Plugin 'jelera/vim-javascript-syntax' " 语法高亮
 Plugin 'hail2u/vim-css3-syntax' " 语法高亮
-Plugin 'terryma/vim-multiple-cursors' " 多行操作 <c-n>
 Plugin 'othree/html5.vim' " html5
-Plugin 'yonchu/accelerated-smooth-scroll' " 平滑滚动插件
-Plugin 'tpope/vim-eunuch' " 重命名 :Rename {newname}
-Plugin 'altercation/vim-colors-solarized' " 配置颜色
-Plugin 'kien/ctrlp.vim' " 模糊查询打开文件
-Plugin 'mattn/emmet-vim' " HTML生成<c-y>, 选中标签<c-y>d，跳转<c-y>n，注释：<c-y>/，合并标签：<c-y>j，移除标签对：<c-y>k
-Plugin 'scrooloose/nerdcommenter' " ,ci ：切换选中行的注释状态
-Plugin 'sjl/gundo.vim'  "编辑文件的时光机器 p对比，回车或者o选择
-Plugin 'nathanaelkane/vim-indent-guides' " 可视化缩进插件
-Plugin 'mxw/vim-jsx' " react jsx插件
 Plugin 'posva/vim-vue' " 语法高亮
-Plugin 'The-NERD-tree' " 树状显示文件目录 ,w切换
-Plugin 'plasticboy/vim-markdown'  " ]]下一标题，[[:上一标题，][下一子标题，[]上一子标题 ，]c当前标题，]u父标题（asdf），<leader>h 进入目录
-Plugin 'Lokaltog/vim-easymotion' " 快速移动 ,,w ,,j ,,k ,,f
+Plugin 'mxw/vim-jsx' " react jsx插件
 Plugin 'jistr/vim-nerdtree-tabs' " nerdtree 打开标签时保持目录
 Plugin 'editorconfig/editorconfig-vim' " 支持editorconfig
-Plugin 'Raimondi/delimitMate' " 括号自动补全
+Plugin 'docunext/closetag.vim' " 提供标签自动闭合
 
 call vundle#end()
