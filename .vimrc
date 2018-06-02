@@ -24,8 +24,6 @@ set confirm " 在处理未保存或只读文件的时候，弹出确认
 set viminfo+=! " 保存全局变量
 set iskeyword+=_,$,@,%,#,- " 带有如下符号的单词不要被换行分割
 set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h18 "设置字体
-set cursorline " 突出显示当前行和列
-set cursorcolumn
 set magic " 设置魔术
 set nobackup " 不要备份文件
 set nowb
@@ -112,6 +110,7 @@ nnoremap <Leader>u :UndotreeToggle<CR>
 nmap <leader>h :Toc<cr>
 nnoremap <C-tab> :bn<CR>
 nnoremap <C-s-tab> :bp<CR>
+nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 
 " Change cursor shape between insert and normal mode in iTerm2.app
 if $TERM_PROGRAM =~ "iTerm"
@@ -138,8 +137,11 @@ Plugin 'mattn/emmet-vim' " HTML生成<c-y>, 选中标签<c-y>d，跳转<c-y>n，
 Plugin 'tpope/vim-surround' " 换 cs"' 删 ds" 增 ysiw) 多空格 ysiw( 整行 yss
 Plugin 'mbbill/undotree'  "编辑文件的时光机器 打开,u 恢复上一步u 撤销 <c+r>
 Plugin 'plasticboy/vim-markdown'  " ]]下一标题，[[:上一标题，][下一子标题，[]上一子标题 ，]c当前，]u父（asdf），<leader>h 目录 Enter进入
+Plugin 'moll/vim-node' " 自动跳转 require: gf
+Plugin 'zivyangll/git-blame.vim' " 提供 Git Commit 信息 ,s
 
 " 展示型插件
+Plugin 'Valloric/YouCompleteMe' " 自动完成
 Plugin 'gregsexton/MatchTag' " 高亮两个配对的tag
 Plugin 'Xuyuanp/nerdtree-git-plugin' " nerdtree Git 标签提示
 Plugin 'airblade/vim-gitgutter' " Git 提示
