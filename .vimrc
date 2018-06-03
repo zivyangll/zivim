@@ -1,6 +1,5 @@
 syntax on " 语法高亮
 colorscheme solarized
-
 filetype plugin indent on " 为特定文件类型载入相关缩进文件
 filetype on " 载入文件类型插件
 
@@ -110,6 +109,7 @@ map <Leader>w :NERDTreeToggle<CR>
 nmap <Leader>u :UndotreeToggle<CR>
 nmap <leader>h :Toc<cr>
 nmap <Leader>c :<C-u>call gitblame#echo()<CR>
+nmap <leader>a :Ag! -w "<cword>"<cr> "用 ,a 搜索当前 cursor 下单词
 nmap <C-A> :<c-C>ggVG
 nmap <S-l> gt
 nmap <S-h> gT
@@ -147,8 +147,11 @@ Plugin 'moll/vim-node' " 自动跳转 require: gf
 Plugin 'zivyangll/git-blame.vim' " 提供 Git Commit 信息 ,s
 Plugin 'tpope/vim-fugitive' " 集成 Git 命令 :Gblame, :Gstatus :Gcommit
 Plugin 'junegunn/gv.vim' " Git Commit 提示 " :GV, 当前文件:GV!
+Plugin 'brooth/far.vim' " 多文件替换 :Far a aa <Tab> :Fardo (t T 是否生效)
+Plugin 'rking/ag.vim' " ,s 全局搜索
 
 " 展示型插件
+Plugin 'itchyny/vim-cursorword' " 相同字符显示下划线
 Plugin 'mhinz/vim-signify' " 显示文件变动
 Plugin 'Valloric/YouCompleteMe' " 自动完成
 Plugin 'gregsexton/MatchTag' " 高亮两个配对的tag
