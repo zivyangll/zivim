@@ -1,5 +1,6 @@
 syntax on " 语法高亮
 colorscheme solarized
+
 filetype plugin indent on " 为特定文件类型载入相关缩进文件
 filetype on " 载入文件类型插件
 
@@ -106,11 +107,16 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd  " vim-markdown
 
 map <Leader>w :NERDTreeToggle<CR>
-nnoremap <Leader>u :UndotreeToggle<CR>
+nmap <Leader>u :UndotreeToggle<CR>
 nmap <leader>h :Toc<cr>
-nnoremap <C-tab> :bn<CR>
-nnoremap <C-s-tab> :bp<CR>
-nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
+nmap <Leader>c :<C-u>call gitblame#echo()<CR>
+nmap <C-A> :<c-C>ggVG
+nmap <S-l> gt
+nmap <S-h> gT
+nmap <C-l> <C-w>l
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
 
 " Change cursor shape between insert and normal mode in iTerm2.app
 if $TERM_PROGRAM =~ "iTerm"
@@ -139,12 +145,13 @@ Plugin 'mbbill/undotree'  "编辑文件的时光机器 打开,u 恢复上一步u
 Plugin 'plasticboy/vim-markdown'  " ]]下一标题，[[:上一标题，][下一子标题，[]上一子标题 ，]c当前，]u父（asdf），<leader>h 目录 Enter进入
 Plugin 'moll/vim-node' " 自动跳转 require: gf
 Plugin 'zivyangll/git-blame.vim' " 提供 Git Commit 信息 ,s
+Plugin 'tpope/vim-fugitive' " 集成 Git 命令 :Gblame, :Gstatus :Gcommit
+Plugin 'junegunn/gv.vim' " Git Commit 提示 " :GV, 当前文件:GV!
 
 " 展示型插件
+Plugin 'mhinz/vim-signify' " 显示文件变动
 Plugin 'Valloric/YouCompleteMe' " 自动完成
 Plugin 'gregsexton/MatchTag' " 高亮两个配对的tag
-Plugin 'Xuyuanp/nerdtree-git-plugin' " nerdtree Git 标签提示
-Plugin 'airblade/vim-gitgutter' " Git 提示
 Plugin 'altercation/vim-colors-solarized' " 配置颜色
 Plugin 'vim-airline/vim-airline' " 状态栏
 Plugin 'nathanaelkane/vim-indent-guides' " 可视化缩进插件
