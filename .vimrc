@@ -91,7 +91,7 @@ let NERDTreeShowFiles=1 " The-NERD-tree
 let NERDTreeWinPos=1 " The-NERD-tree
 let NERDTreeWinPos="left" " The-NERD-tree
 let NERDTreeShowLineNumbers=1 " The-NERD-tree
-let NERDTreeIgnore=['\.pyc$', '\~$', '.DS_Store', '\.swp' ] "ignore files in NERDTree " The-NERD-tree
+let NERDTreeIgnore=['\.pyc$', '\.idea', 'node_modules', '\~$', '.DS_Store', '\.swp' ] "ignore files in NERDTree " The-NERD-tree
 let NERDTreeShowBookmarks=1 " The-NERD-tree
 let g:nerdtree_tabs_smart_startup_focus=2
 let NERDTreeStatusline="%{matchstr(getline('.'), '\\s\\zs\\w\\(.*\\)')}"
@@ -101,22 +101,30 @@ autocmd! bufwritepost .vimrc source %
 autocmd InsertLeave * se nocul  " 用浅色高亮当前行
 autocmd InsertEnter * se cul
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css " vim-vue插件
-" autocmd VimEnter * NERDTree | wincmd p " The-NERD-tree 默认启动，打开后光标在编辑文件中
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif " 自动关闭
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd  " vim-markdown
+autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 
 map <Leader>w :NERDTreeToggle<CR>
 nmap <Leader>u :UndotreeToggle<CR>
 nmap <leader>h :Toc<cr>
+nmap zz :update<cr>
 nmap <Leader>c :<C-u>call gitblame#echo()<CR>
 nmap <leader>a :Ag! -w "<cword>"<cr> "用 ,a 搜索当前 cursor 下单词
 nmap <C-A> :<c-C>ggVG
 nmap <S-l> gt
 nmap <S-h> gT
+nmap <D-r> gt
 nmap <C-l> <C-w>l
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
+
+" macVim 中显示 <D-r> 等，避免误输
+imap <D-r> <ESC>
+imap <D-d> <ESC>
+imap <D-i> <ESC>
+imap <D-e> <ESC>
 
 " Change cursor shape between insert and normal mode in iTerm2.app
 if $TERM_PROGRAM =~ "iTerm"
@@ -169,5 +177,7 @@ Plugin 'mxw/vim-jsx' " react jsx插件
 Plugin 'jistr/vim-nerdtree-tabs' " nerdtree 打开标签时保持目录
 Plugin 'editorconfig/editorconfig-vim' " 支持editorconfig
 Plugin 'docunext/closetag.vim' " 提供标签自动闭合
+Plugin 'jiangmiao/auto-pairs' "提供括号自动不全
+Plugin 'leafgarland/typescript-vim' " TypeScript 语法高亮
 
 call vundle#end()
