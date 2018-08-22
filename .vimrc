@@ -125,6 +125,11 @@ imap <D-r> <ESC>
 imap <D-d> <ESC>
 imap <D-i> <ESC>
 imap <D-e> <ESC>
+imap <D-/> <ESC>
+imap <D-[> <ESC>
+imap <D-]> <ESC>
+imap <D-Bslash> <ESC>
+imap <D-'> <ESC>
 
 " Change cursor shape between insert and normal mode in iTerm2.app
 if $TERM_PROGRAM =~ "iTerm"
@@ -137,6 +142,7 @@ set dir=$HOME/.vim/tmp/swap
 if !isdirectory(&dir) | call mkdir(&dir, 'p', 0700) | endif
 
 call vundle#begin()
+
 Plugin 'gmarik/vundle'  " 管理其他插件 :bundleInstall
 
 " 操作型插件
