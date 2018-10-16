@@ -16,6 +16,8 @@ set foldmethod=manual "启用缩进折叠
 set foldcolumn=0
 set foldlevel=3
 set foldenable
+set cursorline " 突出显示当前行和列
+set cursorcolumn
 set fenc=utf-8 " 设定默认解码
 set fencs=utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936
 set nocompatible " 不要使用vi的键盘模式，而是vim自己的
@@ -168,7 +170,7 @@ Plugin 'rking/ag.vim' " ,s 全局搜索
 Plugin 'itchyny/vim-cursorword' " 相同字符显示下划线
 Plugin 'mhinz/vim-signify' " 显示文件变动
 Plugin 'Valloric/YouCompleteMe' " 自动完成
-Plugin 'gregsexton/MatchTag' " 高亮两个配对的tag
+Plugin 'valloric/matchtagalways'  " 高亮两个配对的tag
 Plugin 'altercation/vim-colors-solarized' " 配置颜色
 Plugin 'vim-airline/vim-airline' " 状态栏
 Plugin 'nathanaelkane/vim-indent-guides' " 可视化缩进插件
