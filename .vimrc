@@ -121,6 +121,7 @@ nmap <C-l> <C-w>l
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
+map <C-o> :NERDTreeFind %<CR> " 自动切换到当前目录
 
 " macVim 中显示 <D-r> 等，避免误输
 imap <D-r> <ESC>
