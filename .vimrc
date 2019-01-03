@@ -3,6 +3,7 @@ colorscheme solarized
 filetype plugin indent on " 为特定文件类型载入相关缩进文件
 filetype on " 载入文件类型插件
 
+set colorcolumn=80
 set clipboard=unnamed " Mac 下共享剪切板
 set undofile " vim退出并在下次打开后仍然保留上次的undo历史
 set undodir=$HOME/.vim/undo " 需要提前创建该目录，否则不会生效
@@ -170,7 +171,6 @@ Plugin 'rking/ag.vim' " ,s 全局搜索
 " 展示型插件
 Plugin 'itchyny/vim-cursorword' " 相同字符显示下划线
 Plugin 'mhinz/vim-signify' " 显示文件变动
-Plugin 'Valloric/YouCompleteMe' " 自动完成
 Plugin 'valloric/matchtagalways'  " 高亮两个配对的tag
 Plugin 'altercation/vim-colors-solarized' " 配置颜色
 Plugin 'vim-airline/vim-airline' " 状态栏
