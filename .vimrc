@@ -107,6 +107,8 @@ autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css " vim
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif " 自动关闭
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd  " vim-markdown
 autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
+autocmd BufNewFile,BufRead *.axml, set ft=xml " 支持小程序XML
+autocmd BufNewFile,BufRead *.acss, set ft=css " 支持小程序样式
 
 map <Leader>w :NERDTreeToggle<CR>
 nmap <Leader>u :UndotreeToggle<CR>
